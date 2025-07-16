@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.annotation.PreDestroy;
+import jakarta.annotation.Resource;
 
 public class Foo {
-  @Autowired
+  // @Autowired
+  @Resource
   Bar bar;
 
   @Value("Hello") // 기본형, 문자열 변수에 값 저장
