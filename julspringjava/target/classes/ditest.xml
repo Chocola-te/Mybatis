@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 태그 사이에 내용이 없으면 앞 태그 뒤에 슬래시를 붙여 끝낸다. -->
+  <!-- <bean></bean> -> <bean /> -->
+  <bean id="bar" class="spring.di.Bar"/>
+  <bean id="baz" class="spring.di.Baz"/>
+
+</beans>
