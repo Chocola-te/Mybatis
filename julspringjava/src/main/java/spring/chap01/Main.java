@@ -12,4 +12,4 @@ public class Main {
 		= (WriteArticleService) beanFactory.getBean("writeArticleService");
 		articleService.write(new Article());
 	}
-}//
+}
