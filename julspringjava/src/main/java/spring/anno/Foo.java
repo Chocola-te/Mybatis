@@ -3,10 +3,12 @@ package spring.anno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PreDestroy;
 import jakarta.annotation.Resource;
 
+@Component("myFoo")
 public class Foo {
   // @Resource
   @Autowired

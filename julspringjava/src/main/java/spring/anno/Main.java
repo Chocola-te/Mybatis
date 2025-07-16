@@ -7,7 +7,7 @@ public class Main {
   public static void main(String[] args) {
     AbstractApplicationContext container = new GenericXmlApplicationContext("annotest.xml");
     
-    Foo f = container.getBean("foo", Foo.class);
+    Foo f = container.getBean("makeFoo", Foo.class);
     f.doFoo();
     
     container.registerShutdownHook();
