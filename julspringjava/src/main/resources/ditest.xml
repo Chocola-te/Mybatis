@@ -8,15 +8,20 @@
   <!-- <bean></bean> => <bean /> -->
   <bean id="bar" class="spring.di.Bar"/>
   <bean id="baz" class="spring.di.Baz"/>
-  <bean id="foo" class="spring.di.Foo">
-    <!-- 생성자 레퍼런스 태그를 태그 안에 쓰는 것도 가능하다. -->
+  <!-- <bean id="foo" class="spring.di.Foo">
+    생성자 레퍼런스 태그를 태그 안에 쓰는 것도 가능하다.
     <constructor-arg>
-      <!-- 1 -->
+      1
       <ref bean="bar"/>
     </constructor-arg>
-    <!-- 2
-     -->
+    2
     <constructor-arg ref="baz"/>
+  </bean> -->
+  <bean id="foo" class="spring.di.Foo">
+    <constructor-arg ref="bar"/>
+    <constructor-arg ref="baz"/>
+    <constructor-arg value="1"/>
+    <constructor-arg value="hello"/>
   </bean>
 
 </beans>
