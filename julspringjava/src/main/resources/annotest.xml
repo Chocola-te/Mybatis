@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <context:annotation-config/>
+  <!-- bar는 주입해줄 field가 없음 -->
+  <bean id="bar" class="spring.anno.Bar"/>
+  <!-- foo는 주입해줄 field가 있지만 annotation으로 주입 -->
+  <bean id="foo" class="spring.anno.Foo"/>
+
+</beans>

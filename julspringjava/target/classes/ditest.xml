@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns:p="http://www.springframework.org/schema/p"
+
+  xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans 
   http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -7,8 +9,11 @@
   <!-- 시작, 종료 태그 사이에 내용이 없으면 시작 태그 뒤에 슬래시를 붙여 끝낸다. -->
   <!-- <bean></bean> => <bean /> -->
   <bean id="bar" class="spring.di.Bar"/>
-  <bean id="baz" class="spring.di.Baz"/>
-  <!-- <bean id="foo" class="spring.di.Foo">
+  <bean id="baz" class="spring.di.Baz"
+        init-method="start" destroy-method="stop"/>
+
+  <!-- private 변수 bar, baz
+  <bean id="foo" class="spring.di.Foo">
     생성자 레퍼런스 태그를 태그 안에 쓰는 것도 가능하다.
     <constructor-arg>
       1
@@ -16,12 +21,47 @@
     </constructor-arg>
     2
     <constructor-arg ref="baz"/>
-  </bean> -->
+  </bean>
+  -->
+
+  <!-- 변수 i, str
   <bean id="foo" class="spring.di.Foo">
     <constructor-arg ref="bar"/>
     <constructor-arg ref="baz"/>
     <constructor-arg value="1"/>
     <constructor-arg value="hello"/>
   </bean>
+  -->
+
+  <!-- setter를 property로 주입
+  <bean id="foo" class="spring.di.Foo">
+    <property name="bar" ref="bar"/>
+    <property name="baz" ref="baz"/>
+    <property name="i" value="10"/>
+    <property name="str" value="Hi"/>
+  </bean>
+  -->
+
+  <!-- setter property를 간략히 주입
+  <bean id="foo" class="spring.di.Foo"
+    p:bar-ref="bar"
+    p:i="100"
+    p:str="Hundred"/>
+  -->
+
+  <bean id="fooLookUp" class="spring.di.FooLookUp">
+    <lookup-method name="getBaz" bean="baz"/>
+  </bean>
+
+  <bean id="foo" class="spring.di.Foo" autowire="byType"
+        p:i="1000"
+        p:str="thousand"/>
+
+    <!-- 두번째 Bar타입 객체
+    byType을 사용하는 경우 객체는 반드시 한개로 매칭되게 할 것
+                                                                                                                                                                                                                     <bean id="bar1" class="spring.di.Bar"/> ERROR
+
+    candidate => autowire 후보에서 제외하겠다 => 상단 객체 하나만 남게 됨 -->
+    <bean id="bar1" class="spring.di.Bar" autowire-candidate="false"/>
 
 </beans>

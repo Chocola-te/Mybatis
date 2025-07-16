@@ -7,6 +7,24 @@ public class Foo {
   int i;
   String str;
 
+  public Foo() {}
+
+public void setBar(Bar bar) {
+    this.bar = bar;
+  }
+
+  public void setBaz(Baz baz) {
+    this.baz = baz;
+  }
+
+  public void setI(int i) {
+    this.i = i;
+  }
+
+  public void setStr(String str) {
+    this.str = str;
+  }
+
   public Foo(Bar bar, Baz baz) {
     this.bar = bar;
     this.baz = baz;
