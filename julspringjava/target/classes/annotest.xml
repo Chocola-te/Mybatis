@@ -8,7 +8,10 @@
 
   <context:annotation-config/>
   <!-- bar는 주입해줄 field가 없음 -->
-  <bean id="bar" class="spring.anno.Bar"/>
+  <bean id="bar1" class="spring.anno.Bar"/>
+  <bean id="bar2" class="spring.anno.Bar">
+    <qualifier value="b"/>
+  </bean>
   <!-- foo는 주입해줄 field가 있지만 annotation으로 주입 -->
   <bean id="foo" class="spring.anno.Foo"/>
 
