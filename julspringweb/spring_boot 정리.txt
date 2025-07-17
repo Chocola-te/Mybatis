@@ -1,4 +1,9 @@
-MVC 패턴
+MVC패턴
+
+      Model
+    ↗      ↘
+View   ←-    Controller
+
 
 spring MVC
 DB 연동 프레임워크 : Mybatis / JPA
@@ -6,3 +11,13 @@ Java 기반 크롤링 : Jsoup
 시큐리티
 
 + react
+---------------------------------------------------------
+src/main/java : 패키지와 클래스 작성
+
+src/main/resource 
+
+-templates : 타임리프 같은 템플릿 기반의 웹 리소스 저장 
+
+-static : HTML 같은 정적인 웹 리소스
+
+-application.properties : 프로젝트 전체에서 사용할 프로퍼티 정보들을 저장
