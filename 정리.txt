@@ -43,3 +43,9 @@ context:component-scan base-package="패키지명 | 상위패키지명"
 └ 메서드
 
 ※ 주입하여 컨테이너에서 등록, 관리할 수 있도록 Bean으로 만들어준다.
+--------------------------------------------------------------------------
+절차 지향
+   ↓
+객체 지향(Object Oriented Programming)
+   ↓
+관점 지향(Aspect Oriented Programming)
