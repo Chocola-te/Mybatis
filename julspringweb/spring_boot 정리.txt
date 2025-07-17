@@ -1,0 +1,8 @@
+MVC 패턴
+
+spring MVC
+DB 연동 프레임워크 : Mybatis / JPA
+Java 기반 크롤링 : Jsoup
+시큐리티
+
++ react
