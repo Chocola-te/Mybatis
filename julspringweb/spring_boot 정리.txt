@@ -2,7 +2,7 @@ MVC패턴
 
       Model
     ↗      ↘
-View   ←-    Controller
+View   ←-   Controller
 
 
 spring MVC
@@ -21,3 +21,96 @@ src/main/resource
 -static : HTML 같은 정적인 웹 리소스
 
 -application.properties : 프로젝트 전체에서 사용할 프로퍼티 정보들을 저장
+---------------------------------------------------------
+1. 프로젝트 생성
+    main클래스에 어노테이션 추가
+    @ComponentScan(basePackages ="com.example")
+
+2. application.properties파일 설정정보 추가
+    server.port=8081
+
+3. controller 생성
+    패키지  com.example.controller
+
+    [HelloController .java]
+    package com.example.controller;
+
+    import org.springframework.stereotype.Controller;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.ResponseBody;
+
+    @Controller
+    public class HelloController {
+
+        @GetMapping("/hello")
+        @ResponseBody
+        public String hello(){
+            return "hello spring!";
+        }
+
+    }
+
+4. view 생성
+    [static/index.html]
+    <h1>인덱스 페이지 입니다.</h1>
+
+5. 실행
+    localhost:8081
+    localhost:8081/hello
+---------------------------------------------------------
+요청 uri - 컨트롤러 - view
+
+1.
+@Controller
+  클래스
+
+2.
+@Get/PostMapping("요청uri")
+  메서드
+
+URL
+protocol://ip(domain):port/path?query(name=value)#id
+/path == 요청uri
+
+3. view 페이지가 있다면
+  메서드 리턴 타입 : String
+  리턴 값 - 뷰 경로 "templates하위 폴더부터 파일명"까지 입력
+              ex) (templates/)"view/hello2"
+
+4. view에 보낼 데이터가 있다면
+  Model에 저장(view에 전달)
+  모델데이터 : 이름 - 값으로 구성
+  view에서는 타임리프를 이용해 출력
+
+경로 부분이 동일할 경우 클래스에 @RequestMapping("/test")
+  /test/hello -> HelloController - hello()
+  /test/hello2 -> HelloController - hello2()
+---------------------------------------------------------
+error code
+200 : 정상 처리
+
+400 : spring에서 400번 에러는 잘못된 파라미터 값
+404 : 경로 에러. 해당 경로에 맞는 리소스나 파일이 없음.
+500 : 실행 중 에러(exception)
+---------------------------------------------------------
+@RequestParam
+(value = "파라미터이름",
+ required = true / false,
+ defaultValue = "기본값")
+
+@RequestParam 매개변수
+@RequestParam("파라미터 이름") 매개변수
+@RequestParam(value = "파라미터 이름", defaultValue = "기본값") 기본형 매개변수
+---------------------------------------------------------
+MVC패턴
+
+spring MVC동작방식
+
+@Controller
+@GetMapping("path")
+
+파라미터값 받아오기
+command 객체
+@RequestParam
+
+@ModelAttribute

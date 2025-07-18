@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>폼에 입력한 데이터 출력</p>
+  <div>
+    <!-- 객체가 아닐때는 hello2.html 참고 -->
+    
+    <!-- NewArticleController.java -->
+    <!-- 객체.변수명 -->
+    제목 : [[${article.title}]]<hr>
+    내용 : [[${article.content}]]<br>
+
+    <!-- NewArticleController.java에서
+    @ModelAttribute("command")를 사용해 Model이름을 바꿨을 때
+    ${command.title}
+    ${command.content} -->
+
+    <div th:each="p : ${article.pet}">
+      [[${pStat.index}]] [[${p}]]
+    </div>
+  </div>
+</body>
+
+</html>
