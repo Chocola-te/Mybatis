@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>result</title>
+</head>
+
+<body>
+  <h3>result page입니다.</h3>
+  <div>
+    인기 키워드 : 
+    <span th:each="query : ${popularQueryList}">
+      [[${query}]]
+    </span>
+  </div>
+  <form action="/search/result">
+    <select name="type">
+      <option th:each="item : ${searchTypeList}"
+              th:text="${item.text}"
+              th:value="${item.code}"
+              th:selected="${item.code} == ${search.type}"/>
+    </select>
+    <input name="query" th:value="${search.query}">
+    <input type="submit" value="검색">
+  </form>
+  <div>
+    검색 키워드 : 
+    <p th:text="${result1 + search.query}"/>
+    <p th:text="${result2}"/>
+    <p th:text="${result3}"/>
+  </div>
+</body>
+
+</html>
