@@ -31,4 +31,10 @@ public class HelloController {
     return "view/hello2";
   }
 
+  @GetMapping("/hello3")
+  public void getMethodName() {}
+  // view name -> URL path 사용
+  // 앞 슬래시를 제외한 hello3 파일을 사용하겠다는 의미
+  // GetMapping("/hello2")의 경우와 비슷함
+
 }
