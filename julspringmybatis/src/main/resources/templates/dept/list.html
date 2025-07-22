@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <table>
+    <tr th:each="dept : ${dlist}">
+      <td th:text="${dept.deptno}"></td>
+      <td><a th:href="@{/update/{no}(no=${dept.deptno})}">[[${dept.dname}]]</a></td>
+                 <!-- 타임리프 하이퍼링크 @{uri/url} -->
+                 <!-- 바뀌지 않는 값이면 @{/update} -->
+                 <!-- 타임리프.txt 참고 -->
+      <td th:text="${dept.loc}"></td>
+      <td><button th:data-target="${dept.deptno}">삭제</button></td>
+    </tr>
+  </table>
+
+  <script>
+    const dbtns = document.querySelectorAll("button");
+
+    dbtns.forEach(dbtn => dbtn.addEventListener("click", function(event) {
+        let no = event.target.getAttribute("data-target");
+        // alert("/delete" + no);
+        if (confirm("삭제?")) {
+          location.href = "/delete/" + no; // GET방식으로 요청
+        }
+      })
+    );
+
+  </script>
+</body>
+
+</html>

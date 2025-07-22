@@ -5,12 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index</title>
+  <style>
+    * {
+      margin: 0px auto;
+      padding: 0px;
+      text-align: center;
+    }
+    a {
+      color: gray;
+      text-decoration-line: none;
+      border: 1px solid;
+      margin: 10px;
+    }
+    fieldset {
+      width: 500px;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
-  <h4>INDEX</h4>
-
-  <a href="dept">모든 부서정보 확인</a><br>
+  <fieldset>
+    <legend>
+      <h3>INDEX</h3>
+    </legend>
+    <div>
+      <a href="/dept">모든 부서정보 확인</a>
+      <a href="/insert">부서 추가</a>
+      <a href="/name/search">사원 검색</a>
+      <a href="/name/searchE">부서 검색</a>
+    </div>
+  </fieldset>
 </body>
 
 </html>
