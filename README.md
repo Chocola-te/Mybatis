@@ -16,3 +16,6 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 ## Dependency Management
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+## Spring-Boot Live-Server Reload
+[JSP live-reload](https://atl.kr/dokuwiki/doku.php/vscode_springboot_thymeleaf_%EB%B3%80%EA%B2%BD%EC%82%AC%ED%95%AD_%EC%A6%89%EC%8B%9C_%EB%B0%98%EC%98%81)
