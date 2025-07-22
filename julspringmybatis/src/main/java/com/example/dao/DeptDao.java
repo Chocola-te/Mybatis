@@ -2,11 +2,12 @@ package com.example.dao;
 
 import java.util.List;
 
+// Google Mybatis 이전의 이름 - ibatis
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-// Google Mybatis 이전의 이름 - ibatis
 import org.apache.ibatis.annotations.Update;
 
 import com.example.dto.Dept;
@@ -33,5 +34,8 @@ public interface DeptDao {
 
   @Update("UPDATE dept SET loc = #{loc} WHERE deptno = ${deptno}")
   int update(@Param("deptno") int deptno, @Param("loc") String loc);
+
+  @Delete("DELETE FROM dept WHERE deptno = #{deptno}")
+  int delete(int deptno); // 한개만 보내는 경우 이름 필요 없음
 
 }

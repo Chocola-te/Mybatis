@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+    <div>
+     <h4>사원의 이름으로 검색합니다.</h4>
+    <form action="/name/result1">
+        <input type="search" name="name">
+        <input type="submit" value="검색">
+    </form>
+    </div>
+    <div>
+        <p>[[${name}]]의 검색결과입니다.</p>
+        <ul th:each="emp:${elist}">
+            <li>사원번호: [[${emp.empno}]]</li>
+            <li>부서명: [[${emp.dept.dname}]]</li>
+            <li>사원명: [[${emp.ename}]]</li>
+            <li>직급: [[${emp.job}]]</li>
+            <li>입사일: [[${#dates.format(emp.hiredate)}]]</li>
+            <hr>
+        </ul>
+
+        <span th:text="'검색 조건에 맞는 사원이 없습니다'" th:if="${size eq 0}"></span>
+                   <!-- " '텍스트 명시 따옴표 주의' " -->
+    </div>
+</body>
+
+<!-- <body>
+  <div>
+    <p>[[${name}]]의 검색 결과입니다.</p>
+  </div>
+  <table>
+    <tr th:each="emp : ${elist}">
+      <td th:text="${elist.ename}"></td>
+    </tr>
+  </table>
+</body> -->
+
+</html>

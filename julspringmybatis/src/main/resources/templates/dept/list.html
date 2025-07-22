@@ -16,16 +16,22 @@
                  <!-- 바뀌지 않는 값이면 @{/update} -->
                  <!-- 타임리프.txt 참고 -->
       <td th:text="${dept.loc}"></td>
-      <td><button id="dbtn" th:data-target="${dept.deptno}">삭제</button></td>
+      <td><button th:data-target="${dept.deptno}">삭제</button></td>
     </tr>
   </table>
 
   <script>
-    dbtn.addEventListner("click", function(event) {
-      let no = event.target.getAttribute("data-target");
-      alert("/delete" + no);
-      location.href = "/delete/" + no;
-    })
+    const dbtns = document.querySelectorAll("button");
+
+    dbtns.forEach(dbtn => dbtn.addEventListener("click", function(event) {
+        let no = event.target.getAttribute("data-target");
+        // alert("/delete" + no);
+        if (confirm("삭제?")) {
+          location.href = "/delete/" + no; // GET방식으로 요청
+        }
+      })
+    );
+
   </script>
 </body>
 
