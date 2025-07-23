@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span {
+      float: left;
+    }
+
+    #empinfo {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div layout:fragment="content">
+    <span id="dept">
+      <select>
+        <option>선택하세요</option>
+        <option th:each="dept:${dlist}" th:text="${dept.dname}" th:value=${dept.deptno}></option>
+      </select>
+    </span>
+    <span id="emp"></span>
+    <span id="empinfo"></span>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const select1 = document.querySelector("#dept select");
+      select1.addEventListener("change", async () => {
+        try {
+          document.querySelector("#emp").innerHTML = "";
+          document.querySelector("#empinfo").innerHTML = "";
+
+          let deptno = select1.value;
+
+          // await를 한 이유는 첫번째 : .then() 콜백지옥을 피하기 위함
+          //                 두번째 : response에 아무것도 담기지 않은 채 하기 코드 진행을 하면 아무 값도 나오지 않음
+          const response = await axios.get("/select/emps/" + deptno);
+          let employees = response.data; // EmpController에서 JSON으로 변환된 data를
+          // 변수에 저장하면서 JS Object로 자동 변환
+
+          // select 태그에 "선택해주세요"를 추가
+          let select = document.createElement('select');
+          const firstoption = document.createElement('option');
+          firstoption.textContent = "선택해주세요";
+          select.appendChild(firstoption);
+
+          // 배열은 forEach 문
+          // option 요소 추가
+          employees.forEach(emp => {
+            const option = document.createElement('option');
+            option.value = emp.empno;
+            option.textContent = emp.ename;
+            select.appendChild(option);
+          });
+
+          // #emp 요소(div 등)에 <select> 삽입
+          let container = document.getElementById('emp');
+          container.appendChild(select);
+
+        } catch (error) {
+          console.error(error);
+        }
+
+      })
+      const select2 = document.querySelector("#emp");
+      select2.addEventListener("change", async () => {
+        try {
+          document.querySelector("#empinfo").innerHTML = "";
+
+          let empno = document.querySelector("#emp select").value;
+          const response = await axios.get("/select/emp/" + empno);
+          let employee = response.data;
+
+          const container2 = document.getElementById('empinfo');
+
+          // 객체는 for in문
+          for (key in employee) {
+            const div = document.createElement('div');
+            if (key === 'hiredate') {
+              const date = new Date(employee[key]);
+              const yyyy = date.getFullYear();
+              const mm = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작
+              const dd = String(date.getDate()).padStart(2, '0');
+              const formatted = `${yyyy}-${mm}-${dd}`;
+              div.textContent = `${key}: ${formatted}`;
+            } else {
+              div.textContent = `${key}: ${employee[key]}`;
+            }
+            container2.appendChild(div);
+          }
+
+        } catch (error) {
+          console.error(error);
+        }
+
+      })
+
+    </script>
+  </div>
+</body>
+
+</html>

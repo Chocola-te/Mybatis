@@ -32,9 +32,14 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  // Mybatis
   implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5")
+  // GSON
   implementation("com.google.code.gson:gson:2.13.1")
+  // spring boot live reload
   implementation 'org.springframework.boot:spring-boot-devtools'
+  // 템플릿 상속
+  implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
 }
 
 tasks.named('test') {
