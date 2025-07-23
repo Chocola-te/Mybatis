@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0px auto;
+      padding: 0px;
+    }
+    table, tr, th, td {
+      border: 1px solid;
+      border-collapse: collapse;
+      margin: 10px;
+      padding: 3px;
+      text-align: center;
+    }
+    div {
+      display: inline-block;
+    }
+    a {
+      text-decoration-line: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <table>
+      <tr>
+        <th>custid</th>
+        <th>name</th>
+        <th>address</th>
+        <th>phone</th>
+      </tr>
+      <tr th:each="customer : ${clist}">
+        <td>[[${customer.custid}]]</td>
+        <td><a th:href="@{/get/info/{custid}(custid=${customer.custid})}">[[${customer.name}]]</a></td>
+        <td>[[${customer.address}]]</td>
+        <td>[[${customer.phone}]]</td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <th>bookid</th>
+        <th>bookname</th>
+        <th>publisher</th>
+        <th>price</th>
+      </tr>
+      <tr th:each="book : ${blist}">
+        <td th:text="${book.bookid}" />
+        <td th:text="${book.bookname}" />
+        <td th:text="${book.publisher}" />
+        <td th:text="${book.price}" />
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

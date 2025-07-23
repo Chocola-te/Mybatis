@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+                                          <!-- 템플릿 상속 - 자식 (~{layout}문서로부터 물려받는다.) -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,8 @@
 </head>
 
 <body>
+  <div layout:fragment="content">
+  <!-- 전체 내용을 div로 감싸면서 content -->
   <table>
     <tr th:each="dept : ${dlist}">
       <td th:text="${dept.deptno}"></td>
@@ -33,6 +35,7 @@
     );
 
   </script>
+  </div>
 </body>
 
 </html>

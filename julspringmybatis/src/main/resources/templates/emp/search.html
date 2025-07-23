@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 
 <head>
   <meta charset="UTF-8">
@@ -8,19 +8,20 @@
 </head>
 
 <body>
+  <div layout:fragment="sidebar">
+    <ul>
+      <li><a th:href="@{/emp}">사원 목록</a></li>
+      <li><a th:href="@{/dept}">부서</a></li>
+    </ul>
+  </div>
+
+  <div layout:fragment="content">
     <h4>사원의 이름으로 검색합니다.</h4>
     <form action="/name/result1">
-        <input type="search" name="name">
-        <input type="submit" value="검색">
+      <input type="search" name="name">
+      <input type="submit" value="검색">
     </form>
+  </div>
 </body>
-
-<!-- <body>
-  <form action="/name/result1">
-    <h4>사원 검색</h4>
-    <input name="ename">
-    <input type="submit" value="검색">
-  </form>
-</body> -->
 
 </html>

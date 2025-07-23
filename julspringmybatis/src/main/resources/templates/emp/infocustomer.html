@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+        * {
+      margin: 0px auto;
+      padding: 0px;
+    }
+    table, tr, th, td {
+      border: 1px solid;
+      border-collapse: collapse;
+      margin: 10px;
+      padding: 3px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h4 style="margin-left: 20px; margin-top: 20px;">[[${name}]]의 검색결과</h4>
+
+  <div th:if="${total} != null">
+
+  <table>
+    <tr>
+      <th>bookname</th>
+      <th>saleprice</th>
+      <th>orderdate</th>
+    </tr>
+    <tr th:each="list : ${list}">
+      <td>[[${list.bookname}]]</td>
+      <td>[[${list.saleprice}]]원</td>
+      <td>[[${list.orderdate}]]</td>
+    </tr>
+  </table>
+
+  <table>
+    <tr>
+      <th>구매 횟수</th>
+      <th>총 구매 금액</th>
+    </tr>
+    <tr>
+      <td th:text="${total.bookcount} != null ? ${total.bookcount} + '권' : '0권'"></td>
+      <td th:text="${total.sumprice} != null ? ${total.sumprice} + '권' : '0원'"></td>
+      <!-- <td th:if="${total.bookcount} != null">[[${total.bookcount}]]권</td>
+      <td th:if="${total.sumprice} != null">[[${total.sumprice}]]원</td> -->
+    </tr>
+  </table>
+
+  </div>
+</body>
+
+</html>

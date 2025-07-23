@@ -17,14 +17,3 @@ public class Emp { //(자식 : n)
 	
 	private Dept dept;//(부모 : 1)
 }
-
-// @Data
-// public class Emp {
-
-//   private int empno; // 사원번호
-//   private int deptno; // 부서명
-//   private String ename; // 사원명
-//   private String job; // 직급
-//   private String hiredate; // 입사일
-
-// }
